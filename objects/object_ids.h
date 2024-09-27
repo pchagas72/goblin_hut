@@ -3,7 +3,7 @@
 #ifndef OBJECT_IDS_H
 #define OBJECT_IDS_H
 
-#define GRASS 0
-#define TREE 1
+const int GRASS = 0;
+const int BIRCH_TREE = 1;
 
 #endif

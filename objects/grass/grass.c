@@ -6,8 +6,8 @@ void initGrass(struct Grass *grass, SDL_Renderer *renderer, struct vec2d cords){
     grass->texture = LoadTexture(grass->texturePath, renderer);
     grass->posRect.x = cords.X;
     grass->posRect.y = cords.Y;
-    grass->posRect.h = 50;
-    grass->posRect.w = 50;
+    grass->posRect.h = 10;
+    grass->posRect.w = 10;
 }
 
 void renderGrass(struct Grass *grass, SDL_Renderer* renderer){

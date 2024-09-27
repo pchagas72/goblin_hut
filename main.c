@@ -8,9 +8,11 @@
 #include <SDL2/SDL_video.h>
 #include <stdbool.h>
 #include "./player/player.h"
-#include "./objects/tree/tree.h"
+#include "objects/tree/tree.h"
 #include "textureManager/textureManager.h"
-#include "dataStructures/vec2d/vec2d.h"
+#include "dataStructures/matrix/matrix.h"
+#include "tilemap/tilemap.h"
+#include "objects/object_ids.h"
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
@@ -50,17 +52,12 @@ int main(int argc, char *argv[]) {
 
     
     // TESTING STUFF
-    struct BirchTree tree;
-    struct vec2d cords;
-    cords.X = 100;
-    cords.Y = 100;
-    initBirchTree(&tree, renderer, cords);
+    
+    struct tilemap map; 
+    map.width = 72;
+    map.height = 48;
 
-    struct BirchTree otherTree;
-    struct vec2d otherCords;
-    otherCords.X = 300;
-    otherCords.Y = 300;
-    initBirchTree(&otherTree, renderer, otherCords);
+
     //
     // INITIALIZING GAME LOOP HERE
     //
@@ -86,9 +83,10 @@ int main(int argc, char *argv[]) {
 
         // render
         SDL_RenderClear(renderer);
+
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         // Render map
-        renderBirchTree(&tree, renderer);
-        renderBirchTree(&otherTree, renderer);
+        //render_tilemap(&map, renderer);
         // Render player
         renderPlayer(&p, renderer);
         SDL_RenderPresent(renderer);
@@ -109,6 +107,9 @@ int main(int argc, char *argv[]) {
     }
     if (window) {
         SDL_DestroyWindow(window);
+    }
+    if (map.mapMatrix){
+        // free_matrix(map.mapMatrix);
     }
     SDL_Quit();
     return 0;

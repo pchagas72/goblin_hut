@@ -16,7 +16,7 @@ struct Grass{
     SDL_Rect srcRect; // Not implemented yet
 };
 
-void initGrass(struct Grass *tree, SDL_Renderer *renderer, struct vec2d cords);
+void initGrass(struct Grass *tree, SDL_Renderer *renderer);
 
 void renderGrass(struct Grass *tree, SDL_Renderer* renderer);
 

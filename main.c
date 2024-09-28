@@ -8,6 +8,8 @@
 #include <SDL2/SDL_video.h>
 #include <stdbool.h>
 #include "./player/player.h"
+#include "dataStructures/vec2d/vec2d.h"
+#include "objects/grass/grass.h"
 #include "objects/tree/tree.h"
 #include "textureManager/textureManager.h"
 #include "dataStructures/matrix/matrix.h"
@@ -54,9 +56,17 @@ int main(int argc, char *argv[]) {
     // TESTING STUFF
     
     struct tilemap map; 
-    map.width = 72;
-    map.height = 48;
+    map.width = 10;
+    map.height = 10;
+    map.mapMatrix = create_matrix(map.height, map.width);
+    for (int i = 0; i < map.height; i++){
+        for (int j = 0; j < map.width; j++){
+            map.mapMatrix->content[i][j] = 0;
+        }
+    }
 
+    struct Grass genericGrass;
+    initGrass(&genericGrass, renderer);
 
     //
     // INITIALIZING GAME LOOP HERE
@@ -84,9 +94,8 @@ int main(int argc, char *argv[]) {
         // render
         SDL_RenderClear(renderer);
 
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         // Render map
-        //render_tilemap(&map, renderer);
+        render_tilemap(&map, renderer);
         // Render player
         renderPlayer(&p, renderer);
         SDL_RenderPresent(renderer);
@@ -101,6 +110,9 @@ int main(int argc, char *argv[]) {
 
     if (p.texture) {
         SDL_DestroyTexture(p.texture);
+    }
+    if (map.mapMatrix){
+        free_matrix(map.mapMatrix);
     }
     if (renderer) {
         SDL_DestroyRenderer(renderer);

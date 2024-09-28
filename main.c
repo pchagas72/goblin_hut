@@ -8,13 +8,10 @@
 #include <SDL2/SDL_video.h>
 #include <stdbool.h>
 #include "./player/player.h"
-#include "dataStructures/vec2d/vec2d.h"
 #include "objects/grass/grass.h"
-#include "objects/tree/tree.h"
 #include "textureManager/textureManager.h"
 #include "dataStructures/matrix/matrix.h"
 #include "tilemap/tilemap.h"
-#include "objects/object_ids.h"
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;

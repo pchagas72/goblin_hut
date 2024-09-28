@@ -12,9 +12,9 @@ void render_tilemap(struct tilemap *tilemap, SDL_Renderer *renderer) {
 }
 
 void generate_tilemap_objects(struct tilemap *tilemap){
-    // This function will be called once per tilemap
+    // This function will be called once per map
     // Create GENERIC LINKED LIST to hold all the different tiles
-    // This facilitates keeping track of all 72*48 10x10 tiles
+    // This facilitates keeping track of all tiles
 }
 
 void render_tilemap_objects(SDL_Renderer *renderer, SDL_Texture *texture, SDL_Rect* posRect) {

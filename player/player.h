@@ -13,7 +13,6 @@
 struct player{
     SDL_Rect posRect;
     SDL_Texture *texture;
-    SDL_Rect collisionRect;
     int speed;
     struct vec2d dir;
     int angle;

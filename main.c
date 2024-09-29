@@ -55,9 +55,9 @@ int main(int argc, char *argv[]) {
     // TESTING STUFF
     
     struct tilemap map; 
-    map.width = 36;
-    map.height = 24;
-    map.tile_size = 20;
+    map.width = 24;
+    map.height = 16;
+    map.tile_size = 30;
     map.mapMatrix = create_matrix(map.height, map.width);
     for (int i = 0; i < map.height; i++){
         for (int j = 0; j < map.width; j++){

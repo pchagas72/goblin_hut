@@ -2,5 +2,5 @@
 
 ## TODO:
 
-- Create matrix data structure (current gives errors)
-- Create tilemap
+- Create collision system
+

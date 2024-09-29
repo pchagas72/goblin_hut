@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
 
         // Player fluid movement
         const Uint8 *keyState = SDL_GetKeyboardState(NULL);
-        handlePlayerInput(keyState, &p, SCREEN_WIDTH, SCREEN_HEIGHT, renderer);
+        handlePlayerInput(keyState, &p, SCREEN_WIDTH, SCREEN_HEIGHT, &map);
 
         // render
         SDL_RenderClear(renderer);

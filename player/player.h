@@ -25,14 +25,12 @@ void handlePlayerInput(const Uint8 *keyState,
                        struct player *p,
                        int SCREEN_WIDTH,
                        int SCREEN_HEIGHT,
-                       SDL_Renderer *renderer);
+                       struct tilemap *map);
 
 void initPlayer(struct player *p);
 
 void renderPlayer(struct player *p, SDL_Renderer* renderer);
 
-void checkPlayerCollision(struct Tile *tile, struct player *p);
-
-void resetPlayerCollision(struct player *p);
+bool checkPlayerCollision(struct tilemap *map, SDL_Rect *ghost);
 
 #endif

@@ -113,7 +113,6 @@ int main(int argc, char *argv[]) {
             SDL_Delay(FRAME_DELAY - frameTime);
         }
         fps = (frameTime > 0) ? 1000.0f / frameTime : 0.0f;
-        printf("%d\n", fps);
 
         intersection = SDL_HasIntersection(&p.posRect, &p.posRect);
 

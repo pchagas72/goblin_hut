@@ -2,5 +2,5 @@
 
 ## TODO:
 
-- Create collision system
+- Refactor everything to make the basics better
 

@@ -1,5 +1,3 @@
-
-
 #ifndef GRASS_H
 #define GRASS_H
 
@@ -11,13 +9,19 @@
 
 struct Grass{
     char* texturePath;
+    char* steppedTexturePath;
     SDL_Texture* texture; 
+    SDL_Texture* steppedTexture; 
     SDL_Rect posRect;
     SDL_Rect srcRect; // Not implemented yet
 };
 
-void initGrass(struct Grass *tree, SDL_Renderer *renderer);
+struct Grass* create_grass();
 
-void renderGrass(struct Grass *tree, SDL_Renderer* renderer);
+void initGrass(struct Grass *grass, SDL_Renderer *renderer, int tile_size, struct vec2d pos);
+
+void renderGrass(void *data, SDL_Renderer* renderer, struct vec2d playerPos);
+
+//void checkStepped(struct Grass *grass, struct player *p);
 
 #endif

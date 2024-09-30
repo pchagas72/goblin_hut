@@ -10,6 +10,8 @@
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
 #include <stdbool.h>
+#include "../objects/grass/grass.h"
+#include "../objects/tree/tree.h"
 
 struct tilemap{
     int width;
@@ -24,12 +26,10 @@ struct tileList{
 };
 
 struct Tile{
-    char* texturePath;
-    SDL_Texture* texture; 
     SDL_Rect posRect;
-    SDL_Rect srcRect; // Not implemented yet
-    SDL_Rect collisionRect;
     bool hasCollision;
+    void(*RenderFunction)(void* object, SDL_Renderer *renderer, struct vec2d playerPos);
+    void* object;
 };
 
 void renderTile(struct Tile *tile, SDL_Renderer* renderer);

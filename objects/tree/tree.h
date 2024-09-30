@@ -14,12 +14,12 @@ struct BirchTree{
     SDL_Texture* texture; 
     SDL_Rect posRect;
     SDL_Rect srcRect; // Not implemented yet
-    int height;
-    int width;
 };
 
-void initBirchTree(struct BirchTree *tree, SDL_Renderer *renderer, struct vec2d cords);
+void initBirchTree(struct BirchTree *tree, SDL_Renderer *renderer, int tile_size, struct vec2d cords);
 
-void renderBirchTree(struct BirchTree *tree, SDL_Renderer* renderer);
+void renderBirchTree(void* tree_data, SDL_Renderer* renderer,struct vec2d playerPos);
+
+struct BirchTree* create_tree();
 
 #endif

@@ -96,13 +96,14 @@ int main(int argc, char *argv[]) {
 
         // Player fluid movement
         const Uint8 *keyState = SDL_GetKeyboardState(NULL);
+        // Handle player movement and collision
         handlePlayerInput(keyState, &p, SCREEN_WIDTH, SCREEN_HEIGHT, &map);
 
         // render
         SDL_RenderClear(renderer);
 
         // Render game
-        render_game(&map, renderer,&p); // ALSO CHECK COLLISIONS ON RENDER
+        render_game(&map, renderer,&p); 
 
         SDL_RenderPresent(renderer);
 
@@ -112,10 +113,6 @@ int main(int argc, char *argv[]) {
         if (FRAME_DELAY > frameTime){
             SDL_Delay(FRAME_DELAY - frameTime);
         }
-        fps = (frameTime > 0) ? 1000.0f / frameTime : 0.0f;
-
-        intersection = SDL_HasIntersection(&p.posRect, &p.posRect);
-
     }
 
     if (p.texture) {

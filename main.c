@@ -14,6 +14,7 @@
 #include "dataStructures/matrix/matrix.h"
 #include "tilemap/tilemap.h"
 #include "renderGame/renderGame.h"
+#include "objects/object_ids.h"
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;

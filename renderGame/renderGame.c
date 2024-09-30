@@ -11,7 +11,6 @@ void render_game(struct tilemap *tilemap, SDL_Renderer *renderer, struct player 
         for (int j = 0; j < tilemap->width; j++) {
             curTile = tilemap->tileList->tiles[i][j];
             curTile->RenderFunction(curTile->object, renderer, PlayerCords);
-            //renderTile(curTile, renderer);
         }
     }
     renderPlayer(p, renderer);

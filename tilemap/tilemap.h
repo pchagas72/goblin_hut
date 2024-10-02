@@ -5,13 +5,13 @@
 
 #include "../dataStructures/matrix/matrix.h"
 #include "../dataStructures/vec2d/vec2d.h"
-#include "../objects/tile/tile.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
 #include <stdbool.h>
 #include "../objects/grass/grass.h"
 #include "../objects/tree/tree.h"
+#include "../objects/object_ids.h"
 
 struct tilemap{
     int width;
@@ -31,8 +31,6 @@ struct Tile{
     void(*RenderFunction)(void* object, SDL_Renderer *renderer, struct vec2d playerPos);
     void* object;
 };
-
-void renderTile(struct Tile *tile, SDL_Renderer* renderer);
 
 struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_type, int tile_size);
 

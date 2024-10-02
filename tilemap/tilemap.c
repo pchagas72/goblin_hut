@@ -15,7 +15,6 @@ void generate_tilemap(SDL_Renderer *renderer,struct tilemap *tilemap){
             int tile_type = tilemap->mapMatrix->content[i][j];
             struct Tile *tile = generateTile(renderer, pos, tile_type, tilemap->tile_size);
             tiles->tiles[i][j] = tile;
-            printf("%d",j);
         }
     }
     tilemap->tileList = tiles;
@@ -27,7 +26,6 @@ struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_t
         fprintf(stderr, "Failed to allocate memory for tile\n");
         return NULL;
     }
-    printf("Generating tile...\n");
     if (tile_type == GRASS) {
         struct Grass *grass = create_grass(); 
         if (grass == NULL){

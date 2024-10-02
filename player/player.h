@@ -7,7 +7,6 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL.h>
 #include "../dataStructures/vec2d/vec2d.h"
-#include "../collision/collision.h"
 #include "../tilemap/tilemap.h"
 
 struct player{

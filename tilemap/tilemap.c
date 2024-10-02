@@ -57,3 +57,8 @@ struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_t
     tile->posRect.y = cords.Y*tile_size;
     return tile;
 }
+
+struct tilemap *create_tilemap(){
+    struct tilemap *map = malloc(sizeof(struct tilemap));
+    return map;
+}

@@ -33,4 +33,6 @@ void renderPlayer(struct player *p, SDL_Renderer* renderer);
 
 bool checkPlayerCollision(struct tilemap *map, SDL_Rect *ghost);
 
+struct player *create_player();
+
 #endif

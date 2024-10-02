@@ -38,9 +38,9 @@ int main(int argc, char *argv[]) {
 
 
     // Create player and initialize it
-    struct player p;
-    LoadPlayerTexture(&p, renderer);
-    initPlayer(&p);
+    struct player *p = create_player();
+    LoadPlayerTexture(p, renderer);
+    initPlayer(p);
 
     // Check if ok before initializing game loop
     if (!isRunning) {
@@ -54,33 +54,32 @@ int main(int argc, char *argv[]) {
     
     // TESTING STUFF
     
-    struct tilemap map; 
-    map.width = 24;
-    map.height = 16;
-    map.tile_size = 30;
-    map.mapMatrix = create_matrix(map.height, map.width);
-    for (int i = 0; i < map.height; i++){
-        for (int j = 0; j < map.width; j++){
+    struct tilemap *map = create_tilemap(); 
+    map->width = 24;
+    map->height = 16;
+    map->tile_size = 30;
+    map->mapMatrix = create_matrix(map->height, map->width);
+    for (int i = 0; i < map->height; i++){
+        for (int j = 0; j < map->width; j++){
             if (j == 0 || j == 35 || i == 0 || i == 23 || (i == 11 && (j > 5 && j < 30))){
-                map.mapMatrix->content[i][j] = TREE;
+                map->mapMatrix->content[i][j] = TREE;
             } else{
-                map.mapMatrix->content[i][j] = GRASS;
+                map->mapMatrix->content[i][j] = GRASS;
             }
         }
     }
 
-    bool intersection = SDL_HasIntersection(&p.posRect, &p.posRect);
-
-    generate_tilemap(renderer, &map);
+    generate_tilemap(renderer, map);
 
 
     //
     // INITIALIZING GAME LOOP HERE
     //
-    uint fps = 0;
     while (isRunning) {
         frameStart = SDL_GetTicks(); 
 
+        // Update framcounter
+        frameCounter++;
 
         // Get input
         SDL_Event e;
@@ -91,19 +90,16 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        // Update
-        frameCounter++;
-
         // Player fluid movement
         const Uint8 *keyState = SDL_GetKeyboardState(NULL);
         // Handle player movement and collision
-        handlePlayerInput(keyState, &p, SCREEN_WIDTH, SCREEN_HEIGHT, &map);
+        handlePlayerInput(keyState, p, SCREEN_WIDTH, SCREEN_HEIGHT, map);
 
         // render
         SDL_RenderClear(renderer);
 
         // Render game
-        render_game(&map, renderer,&p); 
+        render_game(map, renderer,p); 
 
         SDL_RenderPresent(renderer);
 
@@ -115,20 +111,17 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (p.texture) {
-        SDL_DestroyTexture(p.texture);
+    if (p->texture) {
+        SDL_DestroyTexture(p->texture);
     }
-    if (map.mapMatrix){
-        free_matrix(map.mapMatrix);
+    if (map->mapMatrix){
+        free_matrix(map->mapMatrix);
     }
     if (renderer) {
         SDL_DestroyRenderer(renderer);
     }
     if (window) {
         SDL_DestroyWindow(window);
-    }
-    if (map.mapMatrix){
-        // free_matrix(map.mapMatrix);
     }
     SDL_Quit();
     return 0;

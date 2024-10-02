@@ -12,6 +12,11 @@ void LoadPlayerTexture(struct player *p, SDL_Renderer *renderer){
     p->texture = playerTexture;
 }
 
+struct player *create_player(){
+    struct player *p = malloc(sizeof(struct player));
+    return p;
+}
+
 void handlePlayerInput(const Uint8 *keyState,
                        struct player *p,
                        int SCREEN_WIDTH,

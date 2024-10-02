@@ -40,4 +40,6 @@ struct tileList* create_tile_list();
 
 void generate_tilemap(SDL_Renderer *renderer, struct tilemap *tilemap);
 
+struct tilemap *create_tilemap();
+
 #endif

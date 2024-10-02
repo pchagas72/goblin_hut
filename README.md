@@ -2,5 +2,6 @@
 
 ## TODO:
 
-- Refactor everything to make the basics better
+- Step system
+- - Step detection "where am i stepping"
 

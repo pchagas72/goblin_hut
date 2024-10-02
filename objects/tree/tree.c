@@ -30,3 +30,11 @@ void renderBirchTree(void* tree_data, SDL_Renderer* renderer, struct vec2d playe
         fprintf(stderr, "Texture not loaded for Tree at position (%d, %d)\n", tree->posRect.x, tree->posRect.y);
     }
 }
+
+void free_tree(void *data) {
+    struct BirchTree *tree = data;
+    if (tree) {
+        SDL_DestroyTexture(tree->texture);  // Free the texture if it was created
+        free(tree);
+    }
+}

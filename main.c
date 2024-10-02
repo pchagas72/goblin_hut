@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include "./player/player.h"
+#include "objects/steps/steps.h"
 #include "textureManager/textureManager.h"
 #include "dataStructures/matrix/matrix.h"
 #include "tilemap/tilemap.h"
@@ -53,7 +54,7 @@ int main(int argc, char *argv[]) {
     int frameTime;
 
     
-    // TESTING STUFF
+    // Generating game map
     
     struct tilemap *map = create_tilemap(); 
     map->width = 24;
@@ -94,7 +95,7 @@ int main(int argc, char *argv[]) {
         // Player fluid movement
         const Uint8 *keyState = SDL_GetKeyboardState(NULL);
         // Handle player movement and collision
-        handlePlayerInput(keyState, p, SCREEN_WIDTH, SCREEN_HEIGHT, map);
+        handlePlayerInput(keyState, p, SCREEN_WIDTH, SCREEN_HEIGHT, map, renderer);
 
         // render
         SDL_RenderClear(renderer);
@@ -116,7 +117,7 @@ int main(int argc, char *argv[]) {
         SDL_DestroyTexture(p->texture);
     }
     if (map->mapMatrix){
-        free_matrix(map->mapMatrix);
+        free_tilemap(map);
     }
     if (renderer) {
         SDL_DestroyRenderer(renderer);

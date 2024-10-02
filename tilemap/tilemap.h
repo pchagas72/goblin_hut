@@ -30,6 +30,7 @@ struct Tile{
     bool hasCollision;
     void(*RenderFunction)(void* object, SDL_Renderer *renderer, struct vec2d playerPos);
     void* object;
+    uint type;
 };
 
 struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_type, int tile_size);
@@ -39,5 +40,7 @@ struct tileList* create_tile_list();
 void generate_tilemap(SDL_Renderer *renderer, struct tilemap *tilemap);
 
 struct tilemap *create_tilemap();
+
+void free_tilemap(struct tilemap *tilemap);
 
 #endif

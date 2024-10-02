@@ -1,8 +1,7 @@
 #include "./matrix.h"
-#include <stdlib.h>
 
 struct matrix* create_matrix(int lines, int columns) {
-    if (lines <= 0 || columns <= 0) return NULL; // Check for valid dimensions
+    if (lines <= 0 || columns <= 0) return NULL; 
 
     struct matrix* mat = malloc(sizeof(struct matrix)); // Allocate memory for matrix
     if (!mat) return NULL;
@@ -11,8 +10,8 @@ struct matrix* create_matrix(int lines, int columns) {
     mat->columns = columns;
 
     mat->content = malloc(sizeof(int*) * lines);
-    if (!mat->content) { // Check if content allocation was successful
-        free(mat); // Free the matrix struct if content allocation fails
+    if (!mat->content) { 
+        free(mat); // Free the matrix struct 
         return NULL;
     }
 
@@ -23,7 +22,7 @@ struct matrix* create_matrix(int lines, int columns) {
                 free(mat->content[j]); // Free previously allocated rows
             }
             free(mat->content);
-            free(mat); // Free the matrix struct
+            free(mat); 
             return NULL;
         }
     }
@@ -32,13 +31,13 @@ struct matrix* create_matrix(int lines, int columns) {
 }
 
 void free_matrix(struct matrix *mat) {
-    if (!mat) return; // Check if mat is not null
-    if (mat->content) { // Check if content is not null
-        for (int i = 0; i < mat->lines; i++) { // Change <= to <
+    if (!mat) return; 
+    if (mat->content) { 
+        for (int i = 0; i < mat->lines; i++) {
             free(mat->content[i]); // Free each row
         }
-        free(mat->content); // Free the row pointers
-        mat->content = NULL; // Optionally set to NULL
+        free(mat->content); 
+        mat->content = NULL; 
     }
     free(mat); // Free the matrix struct itself
 }

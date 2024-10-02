@@ -5,7 +5,7 @@ struct Grass* create_grass() {
     struct Grass* grass = malloc(sizeof(struct Grass));
     if (!grass) {
         fprintf(stderr, "Failed to allocate memory for Grass\n");
-        exit(EXIT_FAILURE);  // or handle it in another way
+        exit(EXIT_FAILURE); // Make this better 
     }
     return grass;
 }
@@ -30,7 +30,8 @@ void renderGrass(void* grass_data, SDL_Renderer* renderer, struct vec2d playerPo
     }
 }
 
-void freeGrass(struct Grass* grass) {
+void free_grass(void *data) {
+    struct Grass *grass = data;
     if (grass) {
         SDL_DestroyTexture(grass->texture);  // Free the texture if it was created
         SDL_DestroyTexture(grass->steppedTexture);

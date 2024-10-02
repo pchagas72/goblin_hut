@@ -22,6 +22,6 @@ void initGrass(struct Grass *grass, SDL_Renderer *renderer, int tile_size, struc
 
 void renderGrass(void *data, SDL_Renderer* renderer, struct vec2d playerPos);
 
-//void checkStepped(struct Grass *grass, struct player *p);
+void free_grass(void *data);
 
 #endif

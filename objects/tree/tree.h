@@ -22,4 +22,6 @@ void renderBirchTree(void* tree_data, SDL_Renderer* renderer,struct vec2d player
 
 struct BirchTree* create_tree();
 
+void free_tree(void *data);
+
 #endif

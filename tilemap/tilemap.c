@@ -37,6 +37,7 @@ struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_t
         tile->RenderFunction = renderGrass;
         tile->object = (void*)grass;
         tile->hasCollision = false;
+        tile->type = GRASS;
     } else if (tile_type == TREE){
         struct BirchTree* tree = create_tree();
         if (tree == NULL){
@@ -47,7 +48,8 @@ struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_t
         initBirchTree(tree, renderer, tile_size, cords);
         tile->RenderFunction = renderBirchTree;
         tile->object = (void*)tree;
-        tile->hasCollision = true;
+        tile->hasCollision = false;
+        tile->type = TREE;
     }
     tile->posRect.h = tile_size;
     tile->posRect.w = tile_size;
@@ -59,4 +61,16 @@ struct Tile* generateTile(SDL_Renderer* renderer, struct vec2d cords, int tile_t
 struct tilemap *create_tilemap(){
     struct tilemap *map = malloc(sizeof(struct tilemap));
     return map;
+}
+
+void free_tilemap(struct tilemap *tilemap){
+    struct Tile *tile;
+    for (int i = 0; i < tilemap->height; i++){
+        for (int j = 0; j < tilemap->width;j++){
+            tile = tilemap->tileList->tiles[i][j];
+            free(tile);
+        }
+    }
+    free_matrix(tilemap->mapMatrix);
+    free(tilemap);
 }

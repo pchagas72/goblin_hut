@@ -3,6 +3,8 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <stdlib.h>
+
 struct matrix{
     int columns;   
     int lines;
